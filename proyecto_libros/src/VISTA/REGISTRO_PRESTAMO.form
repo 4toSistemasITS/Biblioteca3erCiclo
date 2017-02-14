@@ -46,93 +46,107 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <Component id="labelHeader4" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="textField6" min="-2" pref="185" max="-2" attributes="0"/>
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace max="32767" attributes="0"/>
+                  <Component id="labelTask1" min="-2" pref="494" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="136" max="-2" attributes="0"/>
+              </Group>
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Component id="Registro_btn" min="-2" pref="186" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="labelHeader4" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="T_Libro" min="-2" pref="185" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Component id="labelHeader5" min="-2" pref="131" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="C_Libro" min="-2" pref="185" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Component id="labelHeader6" min="-2" pref="131" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="Fecha" min="-2" pref="185" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="labelHeader2" min="-2" pref="131" max="-2" attributes="0"/>
+                                  <Component id="labelHeader1" min="-2" pref="131" max="-2" attributes="0"/>
+                                  <Component id="labelHeader3" alignment="0" min="-2" pref="131" max="-2" attributes="0"/>
                               </Group>
-                              <Group type="102" attributes="0">
-                                  <Component id="labelHeader5" min="-2" pref="131" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="textField4" min="-2" pref="185" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" attributes="0">
-                                  <Component id="labelHeader6" min="-2" pref="131" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="textField3" min="-2" pref="185" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="labelHeader2" min="-2" pref="131" max="-2" attributes="0"/>
-                                      <Component id="labelHeader1" min="-2" pref="131" max="-2" attributes="0"/>
-                                      <Component id="labelHeader3" alignment="0" min="-2" pref="131" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="textField2" min="-2" pref="185" max="-2" attributes="0"/>
-                                      <Component id="textField1" min="-2" pref="185" max="-2" attributes="0"/>
-                                      <Component id="textField5" alignment="0" min="-2" pref="185" max="-2" attributes="0"/>
-                                  </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="Cedula" min="-2" pref="185" max="-2" attributes="0"/>
+                                  <Component id="Nombre" min="-2" pref="185" max="-2" attributes="0"/>
+                                  <Component id="Apellidos" alignment="0" min="-2" pref="185" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="jLabel1" min="-2" pref="293" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="123" max="-2" attributes="0"/>
-                          <Component id="labelTask1" min="-2" pref="494" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace pref="123" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="-2" pref="94" max="-2" attributes="0"/>
+                          <Component id="Registro_btn1" min="-2" pref="186" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace pref="86" max="32767" attributes="0"/>
+                          <Component id="jLabel1" min="-2" pref="293" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
                   <Component id="labelTask1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="97" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jLabel1" alignment="0" min="-2" pref="277" max="-2" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="labelHeader1" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
-                              <Component id="textField2" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                              <Component id="Cedula" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="labelHeader2" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                              <Component id="textField1" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
+                              <Component id="Nombre" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="labelHeader3" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
-                              <Component id="textField5" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                              <Component id="Apellidos" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="labelHeader4" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
-                              <Component id="textField6" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                              <Component id="T_Libro" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Component id="labelHeader5" min="-2" pref="35" max="-2" attributes="0"/>
-                              <Component id="textField4" min="-2" pref="37" max="-2" attributes="0"/>
+                              <Component id="C_Libro" min="-2" pref="37" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="labelHeader6" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                              <Component id="textField3" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
+                              <Component id="Fecha" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
-                  <EmptySpace pref="226" max="32767" attributes="0"/>
+                  <EmptySpace pref="110" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="Registro_btn" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="Registro_btn1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="82" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -163,28 +177,35 @@
             <Property name="text" type="java.lang.String" value="C&#xd3;D.LIBRO:"/>
           </Properties>
         </Component>
-        <Component class="org.edisoncor.gui.textField.TextField" name="textField1">
+        <Component class="org.edisoncor.gui.textField.TextField" name="Nombre">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textField1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="NombreActionPerformed"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="NombreKeyTyped"/>
           </Events>
         </Component>
-        <Component class="org.edisoncor.gui.textField.TextField" name="textField2">
-        </Component>
-        <Component class="org.edisoncor.gui.textField.TextField" name="textField3">
-        </Component>
-        <Component class="org.edisoncor.gui.textField.TextField" name="textField4">
+        <Component class="org.edisoncor.gui.textField.TextField" name="Cedula">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textField4ActionPerformed"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="CedulaKeyTyped"/>
           </Events>
         </Component>
-        <Component class="org.edisoncor.gui.textField.TextField" name="textField5">
+        <Component class="org.edisoncor.gui.textField.TextField" name="Fecha">
+        </Component>
+        <Component class="org.edisoncor.gui.textField.TextField" name="C_Libro">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="C_LibroActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="org.edisoncor.gui.textField.TextField" name="Apellidos">
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="ApellidosKeyTyped"/>
+          </Events>
         </Component>
         <Component class="org.edisoncor.gui.label.LabelHeader" name="labelHeader6">
           <Properties>
             <Property name="text" type="java.lang.String" value="FECHA: "/>
           </Properties>
         </Component>
-        <Component class="org.edisoncor.gui.textField.TextField" name="textField6">
+        <Component class="org.edisoncor.gui.textField.TextField" name="T_Libro">
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel1">
           <Properties>
@@ -198,6 +219,22 @@
             <Property name="text" type="java.lang.String" value="REGISTRO DE PRESTAMOS DE LIBROS"/>
             <Property name="description" type="java.lang.String" value="BIBLIOTECA MUNICIPAL"/>
           </Properties>
+        </Component>
+        <Component class="org.edisoncor.gui.button.ButtonAction" name="Registro_btn">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Registrar Prestamo"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Registro_btnActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="org.edisoncor.gui.button.ButtonAction" name="Registro_btn1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Volver"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Registro_btn1ActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
