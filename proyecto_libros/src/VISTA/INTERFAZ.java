@@ -14,6 +14,9 @@ public class INTERFAZ extends javax.swing.JFrame {
     /**
      * Creates new form INTERFAZ
      */
+    VENTANA_INICIO vi=new VENTANA_INICIO();
+    String NomBibli1;
+    String ApeBibli1;
     public INTERFAZ() {
         initComponents();
         setLocationRelativeTo(null);
@@ -35,15 +38,20 @@ public class INTERFAZ extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         panelRound1 = new org.edisoncor.gui.panel.PanelRound();
         Registro_btn = new org.edisoncor.gui.button.ButtonAction();
-        buttonAction2 = new org.edisoncor.gui.button.ButtonAction();
-        buttonAction3 = new org.edisoncor.gui.button.ButtonAction();
-        buttonAction4 = new org.edisoncor.gui.button.ButtonAction();
-        buttonAction5 = new org.edisoncor.gui.button.ButtonAction();
-        buttonAction6 = new org.edisoncor.gui.button.ButtonAction();
+        ConsultaPrestamo = new org.edisoncor.gui.button.ButtonAction();
+        ConsultaLibros = new org.edisoncor.gui.button.ButtonAction();
+        IngresoLibros = new org.edisoncor.gui.button.ButtonAction();
+        Contactos = new org.edisoncor.gui.button.ButtonAction();
+        Salir = new org.edisoncor.gui.button.ButtonAction();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
 
         panelTranslucidoComplete1.setColorPrimario(new java.awt.Color(0, 204, 0));
         panelTranslucidoComplete1.setColorSecundario(new java.awt.Color(0, 51, 153));
@@ -64,28 +72,38 @@ public class INTERFAZ extends javax.swing.JFrame {
             }
         });
 
-        buttonAction2.setText("Consulta de préstamos");
-        buttonAction2.addActionListener(new java.awt.event.ActionListener() {
+        ConsultaPrestamo.setText("Consulta de préstamos");
+        ConsultaPrestamo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonAction2ActionPerformed(evt);
+                ConsultaPrestamoActionPerformed(evt);
             }
         });
 
-        buttonAction3.setText("Consulta de libros ");
-        buttonAction3.addActionListener(new java.awt.event.ActionListener() {
+        ConsultaLibros.setText("Consulta de libros ");
+        ConsultaLibros.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonAction3ActionPerformed(evt);
+                ConsultaLibrosActionPerformed(evt);
             }
         });
 
-        buttonAction4.setText("Ingresó de nuevos libros");
-
-        buttonAction5.setText("Cantactos");
-
-        buttonAction6.setText("Salir");
-        buttonAction6.addActionListener(new java.awt.event.ActionListener() {
+        IngresoLibros.setText("Ingreso de nuevos libros");
+        IngresoLibros.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonAction6ActionPerformed(evt);
+                IngresoLibrosActionPerformed(evt);
+            }
+        });
+
+        Contactos.setText("Contactos");
+        Contactos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ContactosActionPerformed(evt);
+            }
+        });
+
+        Salir.setText("Salir");
+        Salir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SalirActionPerformed(evt);
             }
         });
 
@@ -100,11 +118,11 @@ public class INTERFAZ extends javax.swing.JFrame {
                 .addGroup(panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelRound1Layout.createSequentialGroup()
                         .addGroup(panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(buttonAction4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(buttonAction5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(buttonAction6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(buttonAction3, javax.swing.GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE)
-                            .addComponent(buttonAction2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(IngresoLibros, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(Contactos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(Salir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(ConsultaLibros, javax.swing.GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE)
+                            .addComponent(ConsultaPrestamo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(panelRound1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -119,15 +137,15 @@ public class INTERFAZ extends javax.swing.JFrame {
                 .addContainerGap(37, Short.MAX_VALUE)
                 .addComponent(Registro_btn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(buttonAction2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(ConsultaPrestamo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(buttonAction3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(ConsultaLibros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(buttonAction4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(IngresoLibros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(buttonAction5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Contactos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(buttonAction6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Salir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(56, 56, 56))
             .addGroup(panelRound1Layout.createSequentialGroup()
                 .addContainerGap()
@@ -181,23 +199,61 @@ public class INTERFAZ extends javax.swing.JFrame {
     private void Registro_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Registro_btnActionPerformed
         // TODO add your handling code here:
         REGISTRO_PRESTAMO v1= new REGISTRO_PRESTAMO();
+        v1.NomBibli2=NomBibli1;
+        v1.ApeBibli2=ApeBibli1;
         v1.setVisible(true);
+        
         dispose();
     }//GEN-LAST:event_Registro_btnActionPerformed
 
-    private void buttonAction2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAction2ActionPerformed
+    private void ConsultaPrestamoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConsultaPrestamoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_buttonAction2ActionPerformed
-
-    private void buttonAction3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAction3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_buttonAction3ActionPerformed
-
-    private void buttonAction6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAction6ActionPerformed
-        // TODO add your handling code here:
-        setVisible(true);
+        CONSULTA_PRESTAMOS CP=new CONSULTA_PRESTAMOS();
+        CP.NomBibli3=NomBibli1;
+        CP.ApeBibli3=ApeBibli1;
+        CP.setVisible(true);
         dispose();
-    }//GEN-LAST:event_buttonAction6ActionPerformed
+        
+        
+    }//GEN-LAST:event_ConsultaPrestamoActionPerformed
+
+    private void ConsultaLibrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConsultaLibrosActionPerformed
+        // TODO add your handling code here:
+        CONSULTA_LIBROS CL=new CONSULTA_LIBROS();
+        CL.NomBibli4=NomBibli1;
+        CL.ApeBibli4=ApeBibli1;
+        CL.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_ConsultaLibrosActionPerformed
+
+    private void SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_SalirActionPerformed
+
+    private void IngresoLibrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IngresoLibrosActionPerformed
+        // TODO add your handling code here:
+        INGRESO_L IL=new INGRESO_L();
+        IL.NomBibli5=NomBibli1;
+        IL.ApeBibli5=ApeBibli1;
+        IL.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_IngresoLibrosActionPerformed
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        // TODO add your handling code here:
+        NomBibli1=NomBibli1;
+        ApeBibli1=ApeBibli1;
+    }//GEN-LAST:event_formWindowActivated
+
+    private void ContactosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ContactosActionPerformed
+        // TODO add your handling code here:
+        CONTACTOS cn=new CONTACTOS();
+        cn.NomBibli6=NomBibli1;
+        cn.ApeBibli6=ApeBibli1;
+        cn.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_ContactosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -235,12 +291,12 @@ public class INTERFAZ extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private org.edisoncor.gui.button.ButtonAction ConsultaLibros;
+    private org.edisoncor.gui.button.ButtonAction ConsultaPrestamo;
+    private org.edisoncor.gui.button.ButtonAction Contactos;
+    private org.edisoncor.gui.button.ButtonAction IngresoLibros;
     private org.edisoncor.gui.button.ButtonAction Registro_btn;
-    private org.edisoncor.gui.button.ButtonAction buttonAction2;
-    private org.edisoncor.gui.button.ButtonAction buttonAction3;
-    private org.edisoncor.gui.button.ButtonAction buttonAction4;
-    private org.edisoncor.gui.button.ButtonAction buttonAction5;
-    private org.edisoncor.gui.button.ButtonAction buttonAction6;
+    private org.edisoncor.gui.button.ButtonAction Salir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private org.edisoncor.gui.label.LabelTask labelTask1;

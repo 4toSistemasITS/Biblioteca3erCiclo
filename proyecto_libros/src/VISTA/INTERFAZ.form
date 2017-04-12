@@ -9,6 +9,9 @@
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
     <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
   </SyntheticProperties>
+  <Events>
+    <EventHandler event="windowActivated" listener="java.awt.event.WindowListener" parameters="java.awt.event.WindowEvent" handler="formWindowActivated"/>
+  </Events>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
@@ -114,11 +117,11 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="buttonAction4" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="buttonAction5" max="32767" attributes="0"/>
-                                  <Component id="buttonAction6" max="32767" attributes="0"/>
-                                  <Component id="buttonAction3" alignment="0" pref="228" max="32767" attributes="0"/>
-                                  <Component id="buttonAction2" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="IngresoLibros" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="Contactos" max="32767" attributes="0"/>
+                                  <Component id="Salir" max="32767" attributes="0"/>
+                                  <Component id="ConsultaLibros" alignment="0" pref="228" max="32767" attributes="0"/>
+                                  <Component id="ConsultaPrestamo" alignment="1" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace max="32767" attributes="0"/>
                           </Group>
@@ -139,15 +142,15 @@
                       <EmptySpace pref="37" max="32767" attributes="0"/>
                       <Component id="Registro_btn" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="buttonAction2" min="-2" max="-2" attributes="0"/>
+                      <Component id="ConsultaPrestamo" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="buttonAction3" min="-2" max="-2" attributes="0"/>
+                      <Component id="ConsultaLibros" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="buttonAction4" min="-2" max="-2" attributes="0"/>
+                      <Component id="IngresoLibros" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="buttonAction5" min="-2" max="-2" attributes="0"/>
+                      <Component id="Contactos" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="buttonAction6" min="-2" max="-2" attributes="0"/>
+                      <Component id="Salir" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
@@ -167,38 +170,44 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Registro_btnActionPerformed"/>
               </Events>
             </Component>
-            <Component class="org.edisoncor.gui.button.ButtonAction" name="buttonAction2">
+            <Component class="org.edisoncor.gui.button.ButtonAction" name="ConsultaPrestamo">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Consulta de pr&#xe9;stamos"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonAction2ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ConsultaPrestamoActionPerformed"/>
               </Events>
             </Component>
-            <Component class="org.edisoncor.gui.button.ButtonAction" name="buttonAction3">
+            <Component class="org.edisoncor.gui.button.ButtonAction" name="ConsultaLibros">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Consulta de libros "/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonAction3ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ConsultaLibrosActionPerformed"/>
               </Events>
             </Component>
-            <Component class="org.edisoncor.gui.button.ButtonAction" name="buttonAction4">
+            <Component class="org.edisoncor.gui.button.ButtonAction" name="IngresoLibros">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Ingres&#xf3; de nuevos libros"/>
+                <Property name="text" type="java.lang.String" value="Ingreso de nuevos libros"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="IngresoLibrosActionPerformed"/>
+              </Events>
             </Component>
-            <Component class="org.edisoncor.gui.button.ButtonAction" name="buttonAction5">
+            <Component class="org.edisoncor.gui.button.ButtonAction" name="Contactos">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Cantactos"/>
+                <Property name="text" type="java.lang.String" value="Contactos"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ContactosActionPerformed"/>
+              </Events>
             </Component>
-            <Component class="org.edisoncor.gui.button.ButtonAction" name="buttonAction6">
+            <Component class="org.edisoncor.gui.button.ButtonAction" name="Salir">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Salir"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonAction6ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SalirActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel2">

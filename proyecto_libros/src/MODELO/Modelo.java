@@ -5,11 +5,13 @@
  */
 package MODELO;
 
+import java.io.Serializable;
+
 /**
  *
  * @author DELL
  */
-public class Modelo {
+public class Modelo implements Serializable{
     
     public String cedula;
     public String nombres;
@@ -17,17 +19,19 @@ public class Modelo {
     public String titulo_libro;
     public String cod_libro;
     public String fecha;
+    public String Empleado;
 
     public Modelo() {
-    }
+}
 
-    public Modelo(String cedula, String nombres, String apellidos, String titulo_libro, String cod_libro, String fecha) {
+    public Modelo(String cedula, String nombres, String apellidos, String titulo_libro, String cod_libro, String fecha, String Empleado) {
         this.cedula = cedula;
         this.nombres = nombres;
         this.apellidos = apellidos;
         this.titulo_libro = titulo_libro;
         this.cod_libro = cod_libro;
         this.fecha = fecha;
+        this.Empleado = Empleado;
     }
 
     public String getCedula() {
@@ -78,6 +82,27 @@ public class Modelo {
         this.fecha = fecha;
     }
     
+    public String getEmpleado() {
+        return Empleado;
+    }
+
+    public void setEmpleado(String Empleado) {
+        this.Empleado = Empleado;
+    }
+    
+    
+    //metodo para buscar por numero de cedula
+    public boolean BuscarPrestamo(String inicio){
+        if(inicio.isEmpty()||inicio.length()>cedula.length())
+            return false;
+        for (int i=0;i<inicio.length();++i)
+            if (inicio.charAt(i)!=cedula.charAt(i))
+                return false;
+        return true;
+        
+    }
+    
+   
     
     
 }

@@ -7,12 +7,14 @@ package VISTA;
 
 import CONTROLADOR.Controlador;
 import MODELO.Modelo;
+import MODELO.ModeloLibros;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
 
 /**
  *
@@ -23,17 +25,56 @@ public class REGISTRO_PRESTAMO extends javax.swing.JFrame {
     /**
      * Creates new form REGISTRO_PRESTAMO
      */
+    
+    
+    
+    
+    String Bibliotecario="";
     ArrayList<Modelo>lista=new ArrayList<Modelo>();
+    ArrayList<ModeloLibros>lista2=new ArrayList<ModeloLibros>();
+    
     //File archivo= new File("/home/usuario/Escritorio/SERIALIZABLE/TERCERO_SIS.obj");
     File archivo= new File("Registro_Prestamo.obj");
+    File archivo2= new File("Registro_Libros.obj");
     Controlador c=new Controlador();
+    String NomBibli2;
+    String ApeBibli2;
+    int bl=0;
+    int cl=0;
     
+    
+     public void Items(){
+        T_Libro.addItem(" ");
+        try {
+            lista2=c.leerFSLibros(archivo2);
+            String salida="";
+            for (ModeloLibros e:lista2){
+                String datos= new String();
+                datos=e.getTitulo();
+                T_Libro.addItem(datos);    
+            }
+            
+            
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(REGISTRO_PRESTAMO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(REGISTRO_PRESTAMO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+
+ 
     public REGISTRO_PRESTAMO() {
         initComponents();
+        Items();
+        AutoCompleteDecorator.decorate(T_Libro);
         setLocationRelativeTo(null);
         setResizable(false);
         setTitle("Ventana de Registro de Prestamo");
+        Actualizar.setVisible(false);
     }
+    
+   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -54,15 +95,24 @@ public class REGISTRO_PRESTAMO extends javax.swing.JFrame {
         Cedula = new org.edisoncor.gui.textField.TextField();
         Fecha = new org.edisoncor.gui.textField.TextField();
         C_Libro = new org.edisoncor.gui.textField.TextField();
-        Apellidos = new org.edisoncor.gui.textField.TextField();
+        Apellido = new org.edisoncor.gui.textField.TextField();
         labelHeader6 = new org.edisoncor.gui.label.LabelHeader();
-        T_Libro = new org.edisoncor.gui.textField.TextField();
         jLabel1 = new javax.swing.JLabel();
         labelTask1 = new org.edisoncor.gui.label.LabelTask();
         Registro_btn = new org.edisoncor.gui.button.ButtonAction();
-        Registro_btn1 = new org.edisoncor.gui.button.ButtonAction();
+        Volver = new org.edisoncor.gui.button.ButtonAction();
+        labelHeader7 = new org.edisoncor.gui.label.LabelHeader();
+        NombBiblio = new org.edisoncor.gui.textField.TextField();
+        Actualizar = new org.edisoncor.gui.button.ButtonAction();
+        T_Libro = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
 
         panelTranslucidoComplete1.setColorPrimario(new java.awt.Color(0, 204, 0));
         panelTranslucidoComplete1.setColorSecundario(new java.awt.Color(0, 51, 153));
@@ -71,7 +121,7 @@ public class REGISTRO_PRESTAMO extends javax.swing.JFrame {
 
         labelHeader2.setText("NOMBRE: ");
 
-        labelHeader3.setText("APELLIDOS: ");
+        labelHeader3.setText("APELLIDO: ");
 
         labelHeader4.setText("TÍTULO DEL LIBRO:");
 
@@ -94,15 +144,26 @@ public class REGISTRO_PRESTAMO extends javax.swing.JFrame {
             }
         });
 
+        Fecha.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                FechaKeyTyped(evt);
+            }
+        });
+
         C_Libro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 C_LibroActionPerformed(evt);
             }
         });
-
-        Apellidos.addKeyListener(new java.awt.event.KeyAdapter() {
+        C_Libro.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                ApellidosKeyTyped(evt);
+                C_LibroKeyTyped(evt);
+            }
+        });
+
+        Apellido.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                ApellidoKeyTyped(evt);
             }
         });
 
@@ -120,10 +181,45 @@ public class REGISTRO_PRESTAMO extends javax.swing.JFrame {
             }
         });
 
-        Registro_btn1.setText("Volver");
-        Registro_btn1.addActionListener(new java.awt.event.ActionListener() {
+        Volver.setText("Volver");
+        Volver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Registro_btn1ActionPerformed(evt);
+                VolverActionPerformed(evt);
+            }
+        });
+
+        labelHeader7.setText("BIBLIOTECARIO:");
+
+        NombBiblio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NombBiblioActionPerformed(evt);
+            }
+        });
+        NombBiblio.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                NombBiblioKeyTyped(evt);
+            }
+        });
+
+        Actualizar.setText("Actualizar");
+        Actualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ActualizarActionPerformed(evt);
+            }
+        });
+
+        T_Libro.setBackground(new java.awt.Color(153, 153, 153));
+        T_Libro.setEditable(true);
+        T_Libro.setKeySelectionManager(null);
+        T_Libro.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                T_LibroKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                T_LibroKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                T_LibroKeyTyped(evt);
             }
         });
 
@@ -131,56 +227,59 @@ public class REGISTRO_PRESTAMO extends javax.swing.JFrame {
         panelTranslucidoComplete1.setLayout(panelTranslucidoComplete1Layout);
         panelTranslucidoComplete1Layout.setHorizontalGroup(
             panelTranslucidoComplete1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelTranslucidoComplete1Layout.createSequentialGroup()
+                .addGap(160, 160, 160)
+                .addComponent(Registro_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Volver, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(143, 143, 143))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelTranslucidoComplete1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(labelTask1, javax.swing.GroupLayout.PREFERRED_SIZE, 494, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(136, 136, 136))
+                .addGroup(panelTranslucidoComplete1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelTranslucidoComplete1Layout.createSequentialGroup()
+                        .addComponent(labelTask1, javax.swing.GroupLayout.PREFERRED_SIZE, 494, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(254, 254, 254))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelTranslucidoComplete1Layout.createSequentialGroup()
+                        .addComponent(Actualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(340, 340, 340))))
             .addGroup(panelTranslucidoComplete1Layout.createSequentialGroup()
                 .addGap(56, 56, 56)
-                .addGroup(panelTranslucidoComplete1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(Registro_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(panelTranslucidoComplete1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(panelTranslucidoComplete1Layout.createSequentialGroup()
-                            .addComponent(labelHeader4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(T_Libro, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(panelTranslucidoComplete1Layout.createSequentialGroup()
-                            .addComponent(labelHeader5, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(C_Libro, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(panelTranslucidoComplete1Layout.createSequentialGroup()
-                            .addComponent(labelHeader6, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(Fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(panelTranslucidoComplete1Layout.createSequentialGroup()
-                            .addGroup(panelTranslucidoComplete1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(labelHeader2, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(labelHeader1, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(labelHeader3, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(panelTranslucidoComplete1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(Cedula, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(Apellidos, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGroup(panelTranslucidoComplete1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelTranslucidoComplete1Layout.createSequentialGroup()
-                        .addGap(94, 94, 94)
-                        .addComponent(Registro_btn1, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(panelTranslucidoComplete1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(labelHeader2, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(labelHeader1, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(labelHeader3, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(44, 44, 44)
+                        .addGroup(panelTranslucidoComplete1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(Nombre, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 312, Short.MAX_VALUE)
+                            .addComponent(Apellido, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(Cedula, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelTranslucidoComplete1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 86, Short.MAX_VALUE)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(55, 55, 55))))
+                        .addGroup(panelTranslucidoComplete1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(labelHeader4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(labelHeader5, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(labelHeader6, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(labelHeader7, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(44, 44, 44)
+                        .addGroup(panelTranslucidoComplete1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(T_Libro, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(C_Libro, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(NombBiblio, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(51, 51, 51))))
         );
         panelTranslucidoComplete1Layout.setVerticalGroup(
             panelTranslucidoComplete1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelTranslucidoComplete1Layout.createSequentialGroup()
                 .addGap(58, 58, 58)
                 .addComponent(labelTask1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(52, 52, 52)
                 .addGroup(panelTranslucidoComplete1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(panelTranslucidoComplete1Layout.createSequentialGroup()
+                        .addGap(62, 62, 62)
                         .addGroup(panelTranslucidoComplete1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(labelHeader1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(Cedula, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -191,24 +290,34 @@ public class REGISTRO_PRESTAMO extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(panelTranslucidoComplete1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(labelHeader3, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Apellidos, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(Apellido, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(panelTranslucidoComplete1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(labelHeader4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(T_Libro, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(panelTranslucidoComplete1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(T_Libro, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(14, 14, 14)
+                        .addGroup(panelTranslucidoComplete1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(labelHeader5, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(C_Libro, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(panelTranslucidoComplete1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(labelHeader6, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 110, Short.MAX_VALUE)
+                            .addComponent(Fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(panelTranslucidoComplete1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(labelHeader7, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(NombBiblio, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(52, 52, 52))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelTranslucidoComplete1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(81, 81, 81)))
                 .addGroup(panelTranslucidoComplete1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Registro_btn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Registro_btn1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(82, 82, 82))
+                    .addComponent(Volver, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addComponent(Actualizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -219,7 +328,7 @@ public class REGISTRO_PRESTAMO extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelTranslucidoComplete1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(panelTranslucidoComplete1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -235,14 +344,64 @@ public class REGISTRO_PRESTAMO extends javax.swing.JFrame {
 
     private void Registro_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Registro_btnActionPerformed
         // TODO add your handling code here:
-        if(Cedula.getText().isEmpty()|| Nombre.getText().isEmpty()|| Apellidos.getText().isEmpty()||T_Libro.getText().isEmpty()||C_Libro.getText().isEmpty()||Fecha.getText().isEmpty()){
+        
+        if((Cedula.getText().isEmpty())|| Nombre.getText().isEmpty()|| Apellido.getText().isEmpty()||T_Libro.getSelectedItem().equals(" ")||C_Libro.getText().isEmpty()||Fecha.getText().isEmpty()||NombBiblio.getText().isEmpty()){
             JOptionPane.showMessageDialog(null, "No se puede continuar.\nExiste un campo vacio");
         }else{
-            Modelo o1=new Modelo(Cedula.getText(),Nombre.getText(),Apellidos.getText(),T_Libro.getText(),C_Libro.getText(),Fecha.getText());
+            
+            Modelo o1=new Modelo(Cedula.getText(),Nombre.getText(),Apellido.getText(),String.valueOf(T_Libro.getSelectedItem()),C_Libro.getText(),Fecha.getText(),NombBiblio.getText());
+            
             try {
-                lista=c.leerFS(archivo);
-                lista.add(o1);
-                c.EscribirFS(lista, archivo);
+                String nombli="";
+                for(ModeloLibros e2:lista2){
+                    nombli=e2.getTitulo();
+                    if(nombli.equals(String.valueOf(T_Libro.getSelectedItem()))&&(Cedula.getText().length()==10)){
+                        lista = c.leerFS(archivo);
+                        lista.add(o1);
+                        c.EscribirFS(lista, archivo);
+                        bl=0;
+                        cl=0;
+                        INTERFAZ in = new INTERFAZ();
+                        in.NomBibli1 = NomBibli2;
+                        in.ApeBibli1 = ApeBibli2;
+                        in.setVisible(true);
+                        dispose();
+                        break;
+                        
+                    } else {
+                        if(Cedula.getText().length()!=10){
+                            cl+=1;
+                            if (nombli != (String.valueOf(T_Libro.getSelectedItem()))) {
+                                bl += 1;
+                            } else {
+                                bl = 0;
+                                break;
+                            }
+                            
+                        }else{
+                            cl=0;
+                            if (nombli != (String.valueOf(T_Libro.getSelectedItem()))) {
+                                bl += 1;
+                            } else {
+                                bl = 0;
+                                break;
+                            }
+                            
+                        }
+                        
+                        
+                    }
+                    
+                }
+                if(cl>=1){
+                    JOptionPane.showMessageDialog(null, "El número de cedula que ingreso es incorrecto.\nRecuerde que el número de cedula contiene 10 digitos.");
+                    
+                }
+                if (bl >=1) {
+                    JOptionPane.showMessageDialog(null, "El libro no se encuentra en el sistema.\nPor favor aseguerese de haber escrito coreectamente el nombre del Libro.");
+                    
+                }
+                
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(REGISTRO_PRESTAMO.class.getName()).log(Level.SEVERE, null, ex);
             } catch (IOException ex) {
@@ -253,12 +412,17 @@ public class REGISTRO_PRESTAMO extends javax.swing.JFrame {
 
     }//GEN-LAST:event_Registro_btnActionPerformed
 
-    private void Registro_btn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Registro_btn1ActionPerformed
+    private void VolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VolverActionPerformed
         // TODO add your handling code here:
         INTERFAZ in=new INTERFAZ();
+        in.NomBibli1=NomBibli2;
+        in.ApeBibli1=ApeBibli2;
+        NombBiblio.setText(NomBibli2+" "+ApeBibli2);
         in.setVisible(true);
         dispose();
-    }//GEN-LAST:event_Registro_btn1ActionPerformed
+        //Bibliotecario=NombBiblio.getText();
+        //NombBiblio.setText(Bibliotecario);
+    }//GEN-LAST:event_VolverActionPerformed
 
     private void CedulaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CedulaKeyTyped
         // TODO add your handling code here:
@@ -275,19 +439,133 @@ public class REGISTRO_PRESTAMO extends javax.swing.JFrame {
 
     private void NombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NombreKeyTyped
         // TODO add your handling code here:
+         //Accion para convertir todo lo que se escribe en mayuscula
+        char c=evt.getKeyChar();
+        if(Character.isLowerCase(c)){
+            String Buscador=(""+c).toUpperCase();
+            c=Buscador.charAt(0);
+            evt.setKeyChar(c);
+        }
         //codigo para que solo acepte letras
         if ((evt.getKeyChar()<'a'|| evt.getKeyChar()>'z')&&(evt.getKeyChar()<'A'||evt.getKeyChar()>'Z')){
             evt.consume();
         }
+        
     }//GEN-LAST:event_NombreKeyTyped
 
-    private void ApellidosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ApellidosKeyTyped
+    private void ApellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ApellidoKeyTyped
         // TODO add your handling code here:
+         //Accion para convertir todo lo que se escribe en mayuscula
+        char c=evt.getKeyChar();
+        if(Character.isLowerCase(c)){
+            String Buscador=(""+c).toUpperCase();
+            c=Buscador.charAt(0);
+            evt.setKeyChar(c);
+        }
         //codigo para que solo acepte letras
         if ((evt.getKeyChar()<'a'|| evt.getKeyChar()>'z')&&(evt.getKeyChar()<'A'||evt.getKeyChar()>'Z')){
             evt.consume();
         }
-    }//GEN-LAST:event_ApellidosKeyTyped
+    }//GEN-LAST:event_ApellidoKeyTyped
+
+    private void NombBiblioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NombBiblioKeyTyped
+        // TODO add your handling code here:
+        
+        
+    }//GEN-LAST:event_NombBiblioKeyTyped
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        NomBibli2=NomBibli2;
+        ApeBibli2=ApeBibli2;
+        NombBiblio.setText(NomBibli2+" "+ApeBibli2);
+        NombBiblio.setEditable(false);
+        
+        
+        
+    }//GEN-LAST:event_formWindowActivated
+
+    private void C_LibroKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_C_LibroKeyTyped
+        //Accion para convertir todo lo que se escribe en mayuscula
+        char c=evt.getKeyChar();
+        if(Character.isLowerCase(c)){
+            String Buscador=(""+c).toUpperCase();
+            c=Buscador.charAt(0);
+            evt.setKeyChar(c);
+        }        // TODO add your handling code here:
+        //solo acepte 10 caracteres
+        if (C_Libro.getText().length()==6){
+            evt.consume();
+            
+        }
+    }//GEN-LAST:event_C_LibroKeyTyped
+
+    private void ActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ActualizarActionPerformed
+        
+        
+        if(Nombre.getText().isEmpty()||Apellido.getText().isEmpty()||T_Libro.toString().equals(" ")||C_Libro.getText().isEmpty()||Fecha.getText().isEmpty()||NombBiblio.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "Existen campos vacios");
+        }else{
+            try {
+                lista=c.leerFS(archivo);
+                for (Modelo e:lista){
+                    if (e.getCedula().equals(Cedula.getText())){
+                        e.setNombres(Nombre.getText());
+                        e.setApellidos(Apellido.getText());
+                        e.setTitulo_libro(String.valueOf(T_Libro.getSelectedItem()));
+                        e.setCod_libro(C_Libro.getText());
+                        e.setFecha(Fecha.getText());
+                        
+                    }
+                    
+                }
+                //Aqui escribo m nuevo array list modificado a mi archivo
+                c.ActualizarFS(lista, archivo);
+                lista.clear();
+                INTERFAZ in=new INTERFAZ();
+                in.NomBibli1=NomBibli2;
+                in.ApeBibli1=ApeBibli2;
+                in.setVisible(true);
+                dispose();
+                
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(REGISTRO_PRESTAMO.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException ex) {
+                Logger.getLogger(REGISTRO_PRESTAMO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+            
+
+       
+        
+    }//GEN-LAST:event_ActualizarActionPerformed
+
+    private void NombBiblioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NombBiblioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_NombBiblioActionPerformed
+
+    private void FechaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FechaKeyTyped
+        // TODO add your handling code here:
+        //codigo para que solo acepte letras
+        if ((evt.getKeyChar()<'0'||evt.getKeyChar()>'9')&&(evt.getKeyChar()<'-'||evt.getKeyChar()>'-')){
+            evt.consume();
+	}
+    }//GEN-LAST:event_FechaKeyTyped
+
+    private void T_LibroKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_T_LibroKeyReleased
+        
+    }//GEN-LAST:event_T_LibroKeyReleased
+
+    private void T_LibroKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_T_LibroKeyTyped
+        // TODO add your handling code here:
+         //Accion para convertir todo lo que se escribe en mayuscula
+        
+    }//GEN-LAST:event_T_LibroKeyTyped
+
+    private void T_LibroKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_T_LibroKeyPressed
+        // TODO add your handling code here:
+        
+
+    }//GEN-LAST:event_T_LibroKeyPressed
 
     /**
      * @param args the command line arguments
@@ -325,14 +603,16 @@ public class REGISTRO_PRESTAMO extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private org.edisoncor.gui.textField.TextField Apellidos;
-    private org.edisoncor.gui.textField.TextField C_Libro;
-    private org.edisoncor.gui.textField.TextField Cedula;
-    private org.edisoncor.gui.textField.TextField Fecha;
-    private org.edisoncor.gui.textField.TextField Nombre;
-    private org.edisoncor.gui.button.ButtonAction Registro_btn;
-    private org.edisoncor.gui.button.ButtonAction Registro_btn1;
-    private org.edisoncor.gui.textField.TextField T_Libro;
+    public org.edisoncor.gui.button.ButtonAction Actualizar;
+    org.edisoncor.gui.textField.TextField Apellido;
+    org.edisoncor.gui.textField.TextField C_Libro;
+    org.edisoncor.gui.textField.TextField Cedula;
+    org.edisoncor.gui.textField.TextField Fecha;
+    org.edisoncor.gui.textField.TextField NombBiblio;
+    org.edisoncor.gui.textField.TextField Nombre;
+    public org.edisoncor.gui.button.ButtonAction Registro_btn;
+    public javax.swing.JComboBox<String> T_Libro;
+    public org.edisoncor.gui.button.ButtonAction Volver;
     private javax.swing.JLabel jLabel1;
     private org.edisoncor.gui.label.LabelHeader labelHeader1;
     private org.edisoncor.gui.label.LabelHeader labelHeader2;
@@ -340,6 +620,7 @@ public class REGISTRO_PRESTAMO extends javax.swing.JFrame {
     private org.edisoncor.gui.label.LabelHeader labelHeader4;
     private org.edisoncor.gui.label.LabelHeader labelHeader5;
     private org.edisoncor.gui.label.LabelHeader labelHeader6;
+    private org.edisoncor.gui.label.LabelHeader labelHeader7;
     private org.edisoncor.gui.label.LabelTask labelTask1;
     private org.edisoncor.gui.panel.PanelTranslucidoComplete panelTranslucidoComplete1;
     // End of variables declaration//GEN-END:variables
