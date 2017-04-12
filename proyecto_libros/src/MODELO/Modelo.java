@@ -13,6 +13,7 @@ import java.io.Serializable;
  */
 public class Modelo implements Serializable{
     
+    
     public String cedula;
     public String nombres;
     public String apellidos;
